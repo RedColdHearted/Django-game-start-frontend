@@ -3,6 +3,7 @@ import axios from 'axios';
 import {useRef, useState, useEffect} from 'react';
 
 function Auth({ setShowModal }){
+    // uhuhuiigu
     const [loggedIn, setLoggedIn] = useState(false);
     const [isRegistr, setIsRegistr] = useState(true);
     const [login, setLogin] = useState();
