@@ -4,7 +4,6 @@ import {useRef, useState, useEffect} from 'react';
 import { login, signup } from'../actions/auth';
 
 function Auth({ setShowModal }){
-    // gyguiu
     const [loggedIn, setLoggedIn] = useState(false);
     const [isRegistr, setIsRegistr] = useState(true);
     // const [login, setLogin] = useState();
