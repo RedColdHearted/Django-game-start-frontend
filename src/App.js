@@ -1,6 +1,6 @@
 import { Routes, Route } from'react-router-dom';
-import Header from'./header/Header';
-import Main from'./Main/Main';
+import Header from'./componets/header/Header';
+import Main from'./pages/Main/Main';
 import BlogStr from'./BlogsStr/BlogStr';
 import NewsStr from'./NewsStr/NewsStr';
 import GamesStr from'./GameStr/GameStr';

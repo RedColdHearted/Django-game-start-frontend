@@ -1,44 +1,29 @@
 import './Auth.css';
 import axios from 'axios';
 import {useRef, useState, useEffect} from 'react';
+import { login, signup } from'../actions/auth';
 
 function Auth({ setShowModal }){
+    // gyguiu
     const [loggedIn, setLoggedIn] = useState(false);
     const [isRegistr, setIsRegistr] = useState(true);
-    const [login, setLogin] = useState();
+    // const [login, setLogin] = useState();
     const [password, setPassword] = useState();
     const [email, setEmail] = useState();
     const emailHandler = (e) => setEmail(e.target.value);
-    const loginHandler = (e) => setLogin(e.target.value);
+    // const loginHandler = (e) => setLogin(e.target.value);
     const passwordHandler = (e) => setPassword(e.target.value);
-    const info = (e) => console.log(login, password, email);
     const registrHandle = () => {
         setIsRegistr(true)
-        setLogin("")
         setPassword("")
         setEmail("")
     }
     const loginHandle = () => {
         setIsRegistr(false)
-        setLogin("")
         setPassword("")
         setEmail("")
     }
 
-    // const post = () => fetch("http://localhost:8000/api/v1/users/", {
-    //     mode: 'no-cors',
-    //     method: 'POST',
-    //     headers: {
-    //         'Content-Type': 'application/json',
-    //         'Accept': 'application/json'
-    //     },
-    //     body: JSON.stringify({
-    //         username: login,
-    //         email: email,
-    //         password: password
-    //     })})
-        // .then(response => {return response.json()})
-        // .catch(er => console.log(er))
     const post = () => axios.post("http://localhost:8000/api/v1/users/", {
         // mode: 'no-cors',
             username: login,
@@ -47,6 +32,10 @@ function Auth({ setShowModal }){
         })
         .then(response => {console.log("Ok")})
         .catch(er => console.log(er))
+
+    const submitLogin = () => login(email, password)
+    const submitSigUp = () => signup(email, password)
+
     return(
         <>
             {!isRegistr ? (<>
@@ -63,7 +52,7 @@ function Auth({ setShowModal }){
                     </svg>
                 </div>
                 <h1 className='authH1'>Вход</h1>
-                <form className='form'>
+                <form className='form' onSubmit={submitLogin}>
                     <input type='text' placeholder='Email' value={email} onChange={emailHandler}/>
                     <input type='password' placeholder='Пароль' value={password} onChange={passwordHandler}/>
                     <button>Войти</button>
@@ -85,12 +74,12 @@ function Auth({ setShowModal }){
                     </svg>
                 </div>
                 <h1 className='authH1'>Регистрация</h1>
-                <div className='form'>
-                    <input type='text' placeholder='Логин' value={login} onChange={loginHandler}/>
+                <form className='form' onSubmit={submitSigUp}>
+                    {/* <input type='text' placeholder='Логин' value={login} onChange={loginHandler}/> */}
                     <input type='text' placeholder='Email' value={email} onChange={emailHandler}/>
                     <input type='password' placeholder='Пароль' value={password} onChange={passwordHandler}/>
                     <button onClick={post}>Зарегистрироваться</button>
-                </div>
+                </form>
             </div>
             <div className='back' onClick={() => setShowModal(false)}></div>
             </>) }

@@ -1,10 +1,10 @@
 import './Main.css';
-import Imgs from'../../SecImg/Imgs';
-import Pagination from '../../SecImg/Pagination';
+import Imgs from'../../componets/SecImg/Imgs';
+import Pagination from '../../componets/SecImg/Pagination';
 import News from'../../componets/news/News';
 import Compilations from'../../componets/Compilations/Compilations';
 import Blogs from'../Blogs/Blogs';
-import BlogsA from'../../Blogs/BlogsA';
+import BlogsA from'../Blogs/BlogsA';
 import Carousel from 'react-bootstrap/Carousel';
 import {useState} from 'react';
 
